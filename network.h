@@ -8,15 +8,18 @@
 #include <stdint.h>
 #include <memory>
 
+using std::vector;
+
 //Feedforward autoassociative artificial neural network
 class Network
 {
-using std::vector;
 using neuron = vector< int32_t >;
+using WeightMatrixPointer = std::shared_ptr< vector< vector< int32_t > > >;
 
 public:
     Network();
     Network( unsigned iNeuronSize );
+    Network( WeightMatrixPointer iW );
 
     auto getWeightMatrix();
 
@@ -25,10 +28,10 @@ public:
     void calculateWeightMatrix();
     neuron recallPattern( const neuron& s );
 private:
-    const unsigned neuronSize;
+    const long unsigned neuronSize;
 
     std::unique_ptr< vector< neuron > > y; //input/output units
-    std::unique_ptr< vector< vector< int32_t > > > W; //Weight matrix
+    WeightMatrixPointer W; //Weight matrix
 };
 
 #endif // NETWORK_H
