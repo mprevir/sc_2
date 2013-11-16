@@ -5,17 +5,18 @@
 #define NETWORK_H
 
 #include <vector>
-#include <stdint-gcc.h>
+#include <stdint.h>
 #include <memory>
 
 //Feedforward autoassociative artificial neural network
 class Network
 {
 using std::vector;
-using neuron = vector< uint32_t >;
+using neuron = vector< int32_t >;
 
 public:
     Network();
+    Network( unsigned iNeuronSize );
 
     auto getWeightMatrix();
 
@@ -24,10 +25,10 @@ public:
     void calculateWeightMatrix();
     neuron recallPattern( const neuron& s );
 private:
-    const uint32_t neuronSize;
+    const unsigned neuronSize;
 
     std::unique_ptr< vector< neuron > > y; //input/output units
-    std::unique_ptr< vector< vector< uint32_t > > > W; //Weight matrix
+    std::unique_ptr< vector< vector< int32_t > > > W; //Weight matrix
 };
 
 #endif // NETWORK_H
