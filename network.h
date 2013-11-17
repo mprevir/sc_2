@@ -6,7 +6,6 @@
 
 #include <vector>
 #include <stdint.h>
-#include <memory>
 
 using std::vector;
 
@@ -14,12 +13,12 @@ using std::vector;
 class Network
 {
 using neuron = vector< int32_t >;
-using WeightMatrixPointer = std::shared_ptr< vector< vector< int32_t > > >;
+using WeightMatrix = vector< vector< int32_t > >;
 
 public:
     Network();
     Network( unsigned iNeuronSize );
-    Network( WeightMatrixPointer iW );
+    Network( const WeightMatrix& iW );
 
     auto getWeightMatrix();
 
@@ -30,8 +29,10 @@ public:
 private:
     const long unsigned neuronSize;
 
-    std::unique_ptr< vector< neuron > > y; //input/output units
-    WeightMatrixPointer W; //Weight matrix
+    vector< neuron > y; //input/output units
+    WeightMatrix W; //Weight matrix
+
+    int32_t activateFunction( const neuron& iNeuron); //signum (for Hebb rule)
 };
 
 #endif // NETWORK_H
