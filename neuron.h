@@ -9,8 +9,9 @@ class Neuron
 {
 public:
     Neuron();
+    Neuron(const long unsigned iSize);
 
-    int32_t operator[](const long unsigned i) {return vals[i];}
+    int32_t& operator[](const long unsigned i) {return vals[i];}
     auto size() {return vals.size();}
     bool empty() {return vals.empty();}
 private:

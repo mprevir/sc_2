@@ -32,6 +32,7 @@ private:
 
     int32_t activateFunction( const Neuron& iNeuron); //signum (for Hebb rule)
 };
-
+//transposed a * b
 WeightMatrix operator*(const Neuron& a, const Neuron& b);
 WeightMatrix operator+(const WeightMatrix& a, const WeightMatrix& b);
+Neuron operator*(const WeightMatrix& a, const Neuron& b);
