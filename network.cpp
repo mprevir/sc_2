@@ -46,3 +46,37 @@ Network::calculateWeightMatrix()
 
     }
 }
+
+WeightMatrix
+operator*( Neuron& a, Neuron& b)
+{
+    if (a.size() != b.size())
+    {
+        throw wrongNeuronSize();
+    }
+    const long unsigned nSize = a.size();
+    WeightMatrix resW( nSize );
+    for( long unsigned i=0; i<nSize; ++i)
+    {
+        for( long unsigned j=0; j<nSize; ++j)
+        {
+            resW[i][j] = a[i]*b[j];
+        }
+    }
+    return std::move(resW);
+}
+
+WeightMatrix
+operator+( WeightMatrix& a, WeightMatrix& b )
+{
+    const long unsigned nSize = a.size();
+    WeightMatrix resW( nSize );
+    for( long unsigned i=0; i<nSize; ++i )
+    {
+        for( long unsigned j=0; j<nSize; ++j )
+        {
+            resW[i][j] = a[i][j] + b[i][j];
+        }
+    }
+    return std::move(resW);
+}
