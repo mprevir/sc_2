@@ -39,7 +39,7 @@ Network::recallPattern(const Neuron &s)
 {
     Neuron resNeuron;
     resNeuron = W * s;
-    return std::move(resNeuron);
+    return std::move(activateFunction(resNeuron));
 }
 
 void
@@ -52,6 +52,25 @@ Network::calculateWeightMatrix()
     for (unsigned i=0; i<y.size(); ++i)
     {
         W = y[i]*y[i];
+    }
+}
+
+Neuron
+Network::activateFunction( Neuron &iNeuron)
+{
+    Neuron resN(neuronSize);
+    for (unsigned long i=0; i<neuronSize; ++i)
+    {
+        if (iNeuron[i]>0)
+        {
+            resN[i] = 1;
+        } else if (iNeuron[i]<0)
+        {
+            resN[i] = -1;
+        } else
+        {
+            resN[i] = 0;
+        }
     }
 }
 

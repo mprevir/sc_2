@@ -30,7 +30,7 @@ private:
     vector< Neuron > y; //input/output units
     WeightMatrix W; //Weight matrix
 
-    int32_t activateFunction( const Neuron& iNeuron); //signum (for Hebb rule)
+    Neuron activateFunction(Neuron &iNeuron); //signum (for Hebb rule)
 };
 //transposed a * b
 WeightMatrix operator*(Neuron& a, Neuron& b);
