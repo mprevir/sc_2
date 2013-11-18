@@ -12,8 +12,8 @@ public:
     Neuron(const long unsigned iSize);
 
     int32_t& operator[](const long unsigned i) {return vals[i];}
-    auto size() {return vals.size();}
-    bool empty() {return vals.empty();}
+    long unsigned size() {return vals.size();}
+    long unsigned empty() {return vals.empty();}
 private:
     vector< int32_t > vals;
 };

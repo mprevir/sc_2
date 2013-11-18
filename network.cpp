@@ -35,7 +35,7 @@ Network::storePattern( Neuron &t)
 }
 
 Neuron
-Network::recallPattern(const Neuron &s)
+Network::recallPattern(Neuron &s)
 {
     Neuron resNeuron;
     resNeuron = W * s;

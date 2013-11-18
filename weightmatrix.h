@@ -11,8 +11,8 @@ public:
     WeightMatrix();
     WeightMatrix(const unsigned long iSize);
 
-    auto size() {return weights.size();}
-    auto operator[] (const long unsigned i) {return weights[i];}
+    long unsigned size() {return weights.size();}
+    vector< int32_t >& operator[] (const long unsigned i) {return weights[i];}
 
 private:
     vector< vector< int32_t > > weights;

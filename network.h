@@ -18,12 +18,12 @@ public:
     Network( unsigned iNeuronSize );
     Network( WeightMatrix& iW );
 
-    auto getWeightMatrix();
+    WeightMatrix getWeightMatrix();
 
     void storePattern(Neuron &t );
     //calculate weight matrix W using Hebb rule
     void calculateWeightMatrix();
-    Neuron recallPattern( const Neuron& s );
+    Neuron recallPattern(Neuron &s );
 private:
     const long unsigned neuronSize;
 
@@ -35,4 +35,4 @@ private:
 //transposed a * b
 WeightMatrix operator*(Neuron& a, Neuron& b);
 WeightMatrix operator+(const WeightMatrix& a, const WeightMatrix& b);
-Neuron operator*(const WeightMatrix& a, const Neuron& b);
+Neuron operator*(WeightMatrix& a, Neuron& b);
