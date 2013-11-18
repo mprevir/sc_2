@@ -24,6 +24,12 @@ Network::Network( WeightMatrix& iW)
     W = iW;
 }
 
+WeightMatrix
+Network::getWeightMatrix()
+{
+    return W;
+}
+
 void
 Network::storePattern( Neuron &t)
 {

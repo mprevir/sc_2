@@ -10,6 +10,7 @@ class Neuron
 public:
     Neuron();
     Neuron(const long unsigned iSize);
+    Neuron( const vector< int32_t >&& iVals);
 
     int32_t& operator[](const long unsigned i) {return vals[i];}
     long unsigned size() {return vals.size();}
