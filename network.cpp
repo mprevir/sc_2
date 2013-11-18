@@ -4,7 +4,7 @@
 #include "network.h"
 #include "n_exeptions.h"
 
-#define GUI_BOARD_SIZE 10
+#define GUI_BOARD_SIZE 4
 
 Network::Network()
     : neuronSize{ GUI_BOARD_SIZE }
@@ -14,7 +14,7 @@ Network::Network()
 
 Network::Network(unsigned iNeuronSize)
     : neuronSize{ iNeuronSize }
-    , W(GUI_BOARD_SIZE)
+    , W(iNeuronSize)
 {
 }
 
@@ -78,6 +78,7 @@ Network::activateFunction( Neuron &iNeuron)
             resN[i] = 0;
         }
     }
+    return resN;
 }
 
 WeightMatrix

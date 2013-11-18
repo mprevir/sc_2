@@ -9,7 +9,7 @@ Neuron::Neuron(const unsigned long iSize)
 {
 }
 
-Neuron::Neuron(const vector<int32_t>&& iVals)
+Neuron::Neuron(const vector<int32_t> iVals)
     : vals( iVals )
 {
 }
