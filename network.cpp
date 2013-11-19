@@ -57,7 +57,7 @@ Network::calculateWeightMatrix()
     }
     for (unsigned i=0; i<y.size(); ++i)
     {
-        W = y[i]*y[i];
+        W = W + y[i]*y[i];
     }
 }
 
@@ -101,7 +101,7 @@ operator*( Neuron& a, Neuron& b)
 }
 
 WeightMatrix
-operator+( WeightMatrix& a, WeightMatrix& b )
+operator+( WeightMatrix& a, WeightMatrix&& b )
 {
     const long unsigned nSize = a.size();
     WeightMatrix resW( nSize );

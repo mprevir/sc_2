@@ -34,5 +34,5 @@ private:
 };
 //transposed a * b
 WeightMatrix operator*(Neuron& a, Neuron& b);
-WeightMatrix operator+(const WeightMatrix& a, const WeightMatrix& b);
+WeightMatrix operator+(WeightMatrix& a, WeightMatrix&& b);
 Neuron operator*(WeightMatrix& a, Neuron& b);
