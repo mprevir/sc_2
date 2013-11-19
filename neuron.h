@@ -14,7 +14,9 @@ public:
 
     int32_t& operator[](const long unsigned i) {return vals[i];}
     long unsigned size() {return vals.size();}
-    long unsigned empty() {return vals.empty();}
+    bool empty() {return vals.empty();}
+    bool isClear();
+    unsigned long scalarMult( Neuron& iNeuron );
 private:
     vector< int32_t > vals;
 };

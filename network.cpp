@@ -44,6 +44,13 @@ Neuron
 Network::recallPattern(Neuron &s)
 {
     Neuron resNeuron;
+    for (unsigned i=0; i<y.size(); ++i)
+    {
+        if ( y[i].scalarMult( s ) == 0 )
+        {
+            return y[i];
+        }
+    }
     resNeuron = W * s;
     return std::move(activateFunction(resNeuron));
 }
