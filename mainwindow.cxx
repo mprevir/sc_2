@@ -154,8 +154,8 @@ void MainWindow::store()
 {
   // TODO: STORE PATTERN in m_input
     Neuron inputNeuron(m_input);
-    m_network->calculateWeightMatrix();
     m_network->storePattern( inputNeuron );
+    m_network->calculateWeightMatrix();
 }
 
 void MainWindow::showWeights()
