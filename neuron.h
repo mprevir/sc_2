@@ -17,6 +17,7 @@ public:
     bool empty() {return vals.empty();}
     bool isClear();
     unsigned long scalarMult( Neuron& iNeuron );
+    vector< int32_t > getVals(){ return vals; }
 private:
     vector< int32_t > vals;
 };
