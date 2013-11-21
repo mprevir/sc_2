@@ -12,11 +12,11 @@ public:
     WeightMatrix(const unsigned long iSize);
 
     long unsigned size() const {return weights.size();}
-    vector< int32_t >& operator[] (const long unsigned i) {return weights[i];}
-    const vector< int32_t >& operator[] (const long unsigned i) const {return weights[i];}
+    vector< double >& operator[] (const long unsigned i) {return weights[i];}
+    const vector< double >& operator[] (const long unsigned i) const {return weights[i];}
 
-    vector< vector< int32_t > > getWeights() const {return weights;}
+    vector< vector< double > > getWeights() const {return weights;}
 
 private:
-    vector< vector< int32_t > > weights;
+    vector< vector< double > > weights;
 };

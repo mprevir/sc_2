@@ -39,13 +39,19 @@
     <bool>false</bool>
    </attribute>
    <attribute name="horizontalHeaderDefaultSectionSize">
-    <number>20</number>
+    <number>30</number>
+   </attribute>
+   <attribute name="horizontalHeaderMinimumSectionSize">
+    <number>30</number>
    </attribute>
    <attribute name="verticalHeaderVisible">
     <bool>false</bool>
    </attribute>
    <attribute name="verticalHeaderDefaultSectionSize">
-    <number>20</number>
+    <number>30</number>
+   </attribute>
+   <attribute name="verticalHeaderMinimumSectionSize">
+    <number>30</number>
    </attribute>
   </widget>
  </widget>
