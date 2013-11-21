@@ -1,8 +1,23 @@
-project(sc_2)
-cmake_minimum_required(VERSION 2.8)
-#aux_source_directory(. SRC_LIST)
-file(GLOB SRC_LIST "n_exceptions.h" "network.*" "neuron.*" "weightmatrix.*")
+project( sc2 )
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
-#add_library(AssociativeANN ${SRC_LIST})
-add_executable(${PROJECT_NAME} main.cpp ${SRC_LIST})
+cmake_minimum_required( VERSION 2.8.6 )
+
+set( CMAKE_AUTOMOC true )
+
+find_package( Qt4 REQUIRED QtGui QtCore )
+
+include( ${QT_USE_FILE} )
+
+add_subdirectory(AANN)
+
+add_definitions( -std=c++0x )
+
+file( GLOB SOURCES "*.cxx" )
+
+include_directories( ${CMAKE_CURRENT_BINARY_DIR} )
+
+qt4_wrap_ui( matrixdialogFORM "matrixdialog.ui")
+
+add_executable( sc2 ${SOURCES} ${matrixdialogFORM} )
+
+target_link_libraries( sc2 ${QT_LIBRARIES} AssociativeANN)
