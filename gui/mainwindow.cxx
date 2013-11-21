@@ -12,8 +12,6 @@
 #include <QGroupBox>
 #include <QMouseEvent>
 
-#include <QDebug>
-
 namespace sc2
 {
 namespace
@@ -58,8 +56,8 @@ MainWindow::MainWindow(QWidget *parent)
     , m_inputGB  { new QGroupBox { tr( "Input pattern~" ), this    }  }
     , m_outputGB { new QGroupBox { tr( "Recalled pattern~" ), this }  }
 
-    , m_inputLabel  { new customLabel { m_inputGB.get()  }  }
-    , m_outputLabel { new customLabel { m_outputGB.get() }  }
+    , m_inputLabel  { new customLabel { pixels_per_cell, m_inputGB.get() }  }
+    , m_outputLabel { new QLabel      { m_outputGB.get()                 }  }
 
     , m_input( N * N )
     // , m_matrixShower{ new MEGAMATRIXSHOWER{ this } }
@@ -123,7 +121,7 @@ void MainWindow::setupUI()
 
 void MainWindow::connectSignals()
 {
-  connect( m_inputLabel.get(), SIGNAL( mousePressed( const QPoint& ) ), this, SLOT( clickField1( const QPoint& ) ) );
+  connect( m_inputLabel.get(), SIGNAL( mousePressed( int, int ) ), this, SLOT( clickField1( int, int ) ) );
   connect( m_store.get(), SIGNAL( clicked() ), this, SLOT( store() ) );
   connect( m_clear.get(), SIGNAL( clicked() ), this, SLOT( clearField1() ) );
   connect( m_showWeights.get(), SIGNAL( clicked() ), this, SLOT( showWeights() ) );
@@ -140,13 +138,8 @@ void MainWindow::paintEvent(QPaintEvent *)
   m_outputLabel->setPixmap( *m_outputPixmap );
 }
 
-void MainWindow::clickField1(const QPoint &p)
+void MainWindow::clickField1( const int x, const int y )
 {
-  qDebug() << p;
-  uint32_t x = p.x() / 30;
-  uint32_t y = p.y() / 30;
-  qDebug() << x << y;
-
   int pos = 10 * x + y;
   QColor color = (-1 == m_input[pos]) ? Qt::blue : Qt::white;
   m_input[pos] *= -1;

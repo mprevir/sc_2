@@ -53,7 +53,7 @@ private:
   void connectSignals();
   void clearField2();
 private slots:
-  void clickField1( const QPoint& p );
+  void clickField1( int x, int y );
   void clearField1();
   void store();
   void recall();
