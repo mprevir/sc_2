@@ -1,5 +1,8 @@
 #pragma once
 
+#include "matrixdialog.h"
+#include "AANN/network.h"
+
 #include <QWidget>
 #include <memory>
 #include <vector>
@@ -44,8 +47,9 @@ private:
   std::unique_ptr < QLabel      > m_outputLabel;
 
   std::vector     < int32_t     > m_input;
+  std::unique_ptr < Network     > m_network;
 
-  // std::unique_ptr< MEGAMATRIXSHOWER > m_matrixShower;
+   std::unique_ptr< MatrixDialog > m_matrixShower;
 
   virtual void paintEvent( QPaintEvent *event );
 

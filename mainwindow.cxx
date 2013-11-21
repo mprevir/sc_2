@@ -2,6 +2,8 @@
 
 #include "customLabel.h"
 
+#include "AANN/neuron.h"
+
 #include <QColor>
 #include <QPixmap>
 #include <QPainter>
@@ -60,7 +62,8 @@ MainWindow::MainWindow(QWidget *parent)
     , m_outputLabel { new QLabel      { m_outputGB.get()                 }  }
 
     , m_input( N * N )
-    // , m_matrixShower{ new MEGAMATRIXSHOWER{ this } }
+    , m_network{ new Network( N * N ) }
+    , m_matrixShower{ new MatrixDialog{ this } }
 {
   clearField1();
   clearField2();
@@ -150,6 +153,9 @@ void MainWindow::clickField1( const int x, const int y )
 void MainWindow::store()
 {
   // TODO: STORE PATTERN in m_input
+    Neuron inputNeuron(m_input);
+    m_network->calculateWeightMatrix();
+    m_network->storePattern( inputNeuron );
 }
 
 void MainWindow::showWeights()
@@ -157,15 +163,16 @@ void MainWindow::showWeights()
   // TODO: Get weights
   // TODO: Pass to showMatrixForm
   // TODO: showMatrixForm->showModal();
-  // m_matrixShower->showModal();
+    m_matrixShower->setMatrix( m_network->getWeightMatrix() );
+    m_matrixShower->exec();
 }
 
 void MainWindow::recall()
 {
   // TODO: Get pattern in m_input
   // TODO: Recall pattern into output.
-  std::vector< int32_t > output( N * N );
-
+    Neuron inputNeuron(m_input);
+    std::vector< int32_t > output = m_network->recallPattern(inputNeuron).getVals();
 
   for (int i = 0; i < N; ++i ) {
     for (int j = 0; j < N; ++j ) {

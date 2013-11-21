@@ -4,7 +4,7 @@
 #include "network.h"
 #include "n_exeptions.h"
 
-#define GUI_BOARD_SIZE 4
+#define GUI_BOARD_SIZE 10
 
 Network::Network()
     : neuronSize{ GUI_BOARD_SIZE }
@@ -24,10 +24,9 @@ Network::Network( WeightMatrix& iW)
     W = iW;
 }
 
-WeightMatrix
-Network::getWeightMatrix()
+vector<vector<int32_t> > Network::getWeightMatrix()
 {
-    return W;
+    return W.getWeights();
 }
 
 void
@@ -52,12 +51,13 @@ Network::recallPattern(Neuron &s)
         }
     }
     resNeuron = W * s;
-    return std::move(activateFunction(resNeuron));
+    return activateFunction(resNeuron);
 }
 
 void
 Network::calculateWeightMatrix()
 {
+    W = WeightMatrix(neuronSize);
     if (y.empty())
     {
         throw noPatternsStored();
@@ -104,7 +104,7 @@ operator*( Neuron& a, Neuron& b)
             resW[i][j] = a[i]*b[j];
         }
     }
-    return std::move(resW);
+    return resW;
 }
 
 WeightMatrix
@@ -119,7 +119,7 @@ operator+( WeightMatrix& a, WeightMatrix&& b )
             resW[i][j] = a[i][j] + b[i][j];
         }
     }
-    return std::move(resW);
+    return resW;
 }
 
 Neuron
@@ -134,5 +134,5 @@ operator*( WeightMatrix& a, Neuron& b )
             resN[i] += a[i][j] * b[j];
         }
     }
-    return std::move(resN);
+    return resN;
 }

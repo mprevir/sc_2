@@ -6,9 +6,11 @@ MatrixDialog::MatrixDialog(QWidget *parent) :
     ui(new Ui::MatrixDialog)
 {
     ui->setupUi(this);
-    std::vector<std::vector<int32_t>> test(4, std::vector<int32_t>{1, -1, -1, 0});
-    setMatrix(test);
-    showMatrix();
+
+//usage example:
+//    std::vector<std::vector<int32_t>> test(4, std::vector<int32_t>{1, -1, -1, 0});
+//    setMatrix(test);
+//    showMatrix();
 }
 
 MatrixDialog::~MatrixDialog()
@@ -17,9 +19,10 @@ MatrixDialog::~MatrixDialog()
 }
 
 void
-MatrixDialog::setMatrix(const std::vector<std::vector<int32_t> >& iMatrix)
+MatrixDialog::setMatrix(const std::vector<std::vector<int32_t> > iMatrix)
 {
     matrix = iMatrix;
+    showMatrix();
 }
 
 void
