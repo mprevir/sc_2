@@ -30,7 +30,7 @@ Neuron::isClear()
 unsigned long
 Neuron::scalarMult(Neuron &iNeuron)
 {
-    unsigned long sum;
+    unsigned long sum{ 0 };
     for (unsigned i=0; i<vals.size(); ++i)
     {
         sum += vals[i]*iNeuron[i];
