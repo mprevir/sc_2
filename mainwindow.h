@@ -46,7 +46,7 @@ private:
   std::unique_ptr < customLabel > m_inputLabel;
   std::unique_ptr < QLabel      > m_outputLabel;
 
-  std::vector     < int32_t     > m_input;
+  std::vector     < double     > m_input;
   std::unique_ptr < Network     > m_network;
 
    std::unique_ptr< MatrixDialog > m_matrixShower;

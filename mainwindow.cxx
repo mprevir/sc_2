@@ -172,7 +172,7 @@ void MainWindow::recall()
   // TODO: Get pattern in m_input
   // TODO: Recall pattern into output.
     Neuron inputNeuron(m_input);
-    std::vector< int32_t > output = m_network->recallPattern(inputNeuron).getVals();
+    std::vector< double > output = m_network->recallPattern(inputNeuron).getVals();
 
   for (int i = 0; i < N; ++i ) {
     for (int j = 0; j < N; ++j ) {

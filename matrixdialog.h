@@ -15,7 +15,7 @@ class MatrixDialog : public QDialog
     
 public:
     explicit MatrixDialog(QWidget *parent = 0);
-    void setMatrix(const std::vector< std::vector<int32_t> > iMatrix);
+    void setMatrix(const std::vector<std::vector<double> > iMatrix);
     ~MatrixDialog();
     
 private slots:
@@ -23,7 +23,7 @@ private slots:
 
 private:
     Ui::MatrixDialog *ui;
-    std::vector< std::vector<int32_t> > matrix;
+    std::vector< std::vector<double> > matrix;
 
     void showMatrix();
 };

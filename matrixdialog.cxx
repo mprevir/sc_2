@@ -19,7 +19,7 @@ MatrixDialog::~MatrixDialog()
 }
 
 void
-MatrixDialog::setMatrix(const std::vector<std::vector<int32_t> > iMatrix)
+MatrixDialog::setMatrix(const std::vector<std::vector<double> > iMatrix)
 {
     matrix = iMatrix;
     showMatrix();

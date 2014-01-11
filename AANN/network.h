@@ -18,7 +18,7 @@ public:
     Network( unsigned iNeuronSize );
     Network( WeightMatrix& iW );
 
-    vector< vector< int32_t > > getWeightMatrix();
+    vector<vector<double> > getWeightMatrix();
 
     void storePattern(Neuron &t );
     //calculate weight matrix W using Hebb rule
@@ -32,7 +32,3 @@ private:
 
     Neuron activateFunction(Neuron &iNeuron); //signum (for Hebb rule)
 };
-//transposed a * b
-WeightMatrix operator*(Neuron& a, Neuron& b);
-WeightMatrix operator+(WeightMatrix& a, WeightMatrix&& b);
-Neuron operator*(WeightMatrix& a, Neuron& b);

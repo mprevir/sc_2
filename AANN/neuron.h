@@ -10,16 +10,16 @@ class Neuron
 public:
     Neuron();
     Neuron(long unsigned iSize);
-    Neuron(vector<int32_t> iVals);
+    Neuron(vector<double> iVals);
 
-    int32_t& operator[](const long unsigned i) {return vals[i];}
-    const int32_t& operator[](const long unsigned i) const {return vals[i];}
+    double& operator[](const long unsigned i) {return vals[i];}
+    const double& operator[](const long unsigned i) const {return vals[i];}
 
     long unsigned size() const {return vals.size();}
     bool empty() const {return vals.empty();}
     bool isClear() const;
-    unsigned long scalarMult( const Neuron& iNeuron ) const;
-    vector< int32_t > getVals() const { return vals; }
+    double scalarMult( const Neuron& iNeuron ) const;
+    vector< double > getVals() const { return vals; }
 private:
-    vector< int32_t > vals;
+    vector< double > vals;
 };
