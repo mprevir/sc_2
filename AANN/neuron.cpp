@@ -15,7 +15,7 @@ Neuron::Neuron(const vector<int32_t> iVals)
 }
 
 bool
-Neuron::isClear()
+Neuron::isClear() const
 {
     for (unsigned i=0; i<vals.size(); ++i)
     {
@@ -28,11 +28,12 @@ Neuron::isClear()
 }
 
 unsigned long
-Neuron::scalarMult(Neuron &iNeuron)
+Neuron::scalarMult(const Neuron &iNeuron) const
 {
     unsigned long sum{ 0 };
     for (unsigned i=0; i<vals.size(); ++i)
     {
         sum += vals[i]*iNeuron[i];
     }
+    return sum;
 }
